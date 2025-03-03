@@ -1,0 +1,14 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "msedge",
+            "request": "launch",
+            "name": "Open websiteTemplate1.html",
+            "file": "d:\\ParvaM\\Workshop\\Training & Placement Feb 25 - ParvaM - Talakal\\Daily Task\\2LG21CSXXX_CHANDRA_T-P_25_GEC_Talakal_ParvaM\\27th Feb 25\\websiteTemplate1.html"
+        }
+    ]
+}
