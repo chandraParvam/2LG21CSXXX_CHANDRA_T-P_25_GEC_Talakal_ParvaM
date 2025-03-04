@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Example 1</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+
+        <div>
+            <label for="txt1">Value 1</label>
+            <input type="text" id="val1" name="val1" value="" placeholder="Enter the value" >  <!-- val1 = "abc" -->
+        </div>
+        <div>
+            <label for="txt2">Value 2</label>
+            <input type="text" id="val2" name="val2" value="" placeholder="Enter the value"> <!-- val2 = "xyz" -->
+        </div>
+        <div> <button onclick="getResult()" >Submit</button></div>
+        <div id="fnlresult">
+           
+        </div>
+   <script>
+    function getResult(){
+        var val1 = document.getElementById('val1').value; // val1 = "abc"
+        var val2 =document.getElementById('val2').value; // val2 = "xyz"
+        var result;  //
+
+        if(!isNaN(val1)  && !isNaN(val2)){ // val1 = "12223" val2 = "sdfsdfsd"   || 1 && 1  =  0 && 0
+            resulta = parseFloat(val1) + parseFloat(val2); 
+            results = parseFloat(val1) - parseFloat(val2); 
+        }else{
+            result = val1 + val2; // abcxyz
+        }
+        document.getElementById('fnlresult').innerHTML = `<table>
+                <tr>
+                    <th>x</th>
+                    <th>Y</th>
+                    <th>OP.</th>
+                    <th>EXP.</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>${val1}</td>
+                    <td>${val2}</td>
+                    <td>+</td>
+                    <td>${val1}+${val2}</td>
+                    <td>${resulta}</td>
+                </tr>
+                 <tr>
+                    <td>${val1}</td>
+                    <td>${val2}</td>
+                    <td>-</td>
+                    <td>${val1}-${val2}</td>
+                    <td>${results}</td>
+                </tr>
+            </table>`; 
+    }
+</script> 
+</body>
+</html>

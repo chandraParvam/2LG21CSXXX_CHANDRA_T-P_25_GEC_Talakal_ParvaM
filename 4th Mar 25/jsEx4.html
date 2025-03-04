@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse a Number</title>
+</head>
+<body>
+    <h1>Reverse a Number</h1>
+    <form id="reverseForm">
+        <label for="numberInput">Enter a number:</label>
+        <input type="number" id="numberInput" required>
+        <button type="submit">Reverse</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('reverseForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const number = document.getElementById('numberInput').value;
+            const reversedNumber = number.split('').reverse().join('');
+            document.getElementById('result').innerText = `Reversed Number: ${reversedNumber}`;
+        });
+    </script>
+</body>
+</html></html>
