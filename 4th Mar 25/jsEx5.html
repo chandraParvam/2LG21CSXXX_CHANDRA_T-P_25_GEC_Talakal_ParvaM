@@ -38,6 +38,39 @@
 
 
         if(!isNaN(val1)  && !isNaN(val2)){ // val1 = "10" val2 = "20"   || 1 && 1  =  0 && 0
+
+        if(val1 < 10 && val2 < 10){
+          result =`<table>
+            <tr>
+              <th>a<sup>2</sup> - b<sup>2</sup> = (a - b)(a + b)<br>
+              ${val1}<sup>2</sup> - ${val2}<sup>2</sup> = ( ${val1} - ${val2} ) ( ${val1} + ${val2})<br>
+              ${val1**2 - val2**2} = ${val1**2 - val2**2}</th>
+            </tr>
+            <tr>
+              <th>(a + b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup><br>
+              (${val1} + ${val2})<sup>2</sup> = ${val1}<sup>2</sup> + 2(${val1})(${val2}) + ${val2}<sup>2</sup><br>
+              ${(parseFloat(val1) + parseFloat(val2))**2} = ${(parseFloat(val1) + parseFloat(val2))**2}</th>
+            </tr>
+            <tr>
+              <th>a<sup>2</sup> + b<sup>2</sup> = (a + b)<sup>2</sup> - 2ab<br>
+              ${val1}<sup>2</sup> + ${val2}<sup>2</sup> = (${val1} + ${val2})<sup>2</sup> - 2(${val1})(${val2})<br>
+              ${val1**2 + val2**2} =  ${val1**2 + val2**2}</th>
+            </tr>
+            <tr>
+              <th>(a - b)<sup>2</sup> = a<sup>2</sup> - 2ab + b<sup>2</sup><br>
+              (${val1} - ${val2})<sup>2</sup> = ${val1}<sup>2</sup> - 2(${val1})(${val2}) + ${val2}<sup>2</sup><br>
+              ${(parseFloat(val1) - parseFloat(val2))**2} = ${(parseFloat(val1) - parseFloat(val2))**2}</th>
+            </tr>
+            <tr>
+              <th>a<sup>3</sup> - b<sup>3</sup> = (a - b)(a<sup>2</sup> + ab + b<sup>2</sup>)<br>
+              ${val1}<sup>3</sup> - ${val2}<sup>3</sup> = (${val1} - ${val2})(${val1}<sup>2</sup> + (${val1})(${val2}) + ${val2}<sup>2</sup>)<br>
+              ${val1**3 - val2**3} = ${val1**3 - val2**3}</th>
+            </tr>
+          </table>`;
+
+        }else{
+
+        
         let resulta = parseFloat(val1) + parseFloat(val2);  // 30
         let results = parseFloat(val1) - parseFloat(val2);  // -10
         let resultm = parseFloat(val1) * parseFloat(val2);  // 200
@@ -114,7 +147,7 @@
                 </tr>
               </table>`;
               
-
+            }
 
         }else{
           let  resultCancat = val1 + val2; // abcxyz

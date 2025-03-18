@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape Area Calculator</title>
+    <style>
+        .shape-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        .shape {
+            display: none;
+            position: relative;
+        }
+        .circle {
+            background-color: blue;
+            border-radius: 50%;
+        }
+        .square {
+            background-color: red;
+        }
+        .rectangle {
+            background-color: green;
+        }
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid orange;
+        }
+    </style>
+</head>
+<body>
+    <h2>Choose a Shape</h2>
+    <select id="shapeSelector" onchange="updateInputs()">
+        <option value="circle">Circle</option>
+        <option value="square">Square</option>
+        <option value="rectangle">Rectangle</option>
+        <option value="triangle">Triangle</option>
+    </select>
+    <br><br>
+    <div id="inputs">
+        <label id="label1">Radius:</label>
+        <input type="number" id="input1" oninput="updateShapeSize()">
+        <br><br>
+        <label id="label2" style="display:none;">Height:</label>
+        <input type="number" id="input2" style="display:none;" oninput="updateShapeSize()">
+    </div>
+    <br>
+    <button style="display: none;" onclick="calculateArea()">Calculate Area</button>
+    <h3 id="results"></h3>
+    
+    <div class="shape-container">
+        <div id="circle" class="shape circle"></div>
+        <div id="square" class="shape square"></div>
+        <div id="rectangle" class="shape rectangle"></div>
+        <div id="triangle" class="shape triangle"></div>
+    </div>
+    
+    <script>
+        function updateInputs() {
+            const shape = document.getElementById("shapeSelector").value;
+            const label1 = document.getElementById("label1");
+            const input1 = document.getElementById("input1");
+            const label2 = document.getElementById("label2");
+            const input2 = document.getElementById("input2");
+            
+            input2.style.display = "none";
+            label2.style.display = "none";
+            
+            if (shape === "circle") {
+                label1.innerText = "Radius:";
+            } else if (shape === "square") {
+                label1.innerText = "Side:";
+            } else if (shape === "rectangle" || shape === "triangle") {
+                label1.innerText = "Width:";
+                label2.innerText = "Height:";
+                label2.style.display = "inline";
+                input2.style.display = "inline";
+            }
+            updateShapeSize();
+        }
+
+        function calculateArea() {
+            const shape = document.getElementById("shapeSelector").value;
+            const val1 = parseFloat(document.getElementById("input1").value) || 0;
+            const val2 = parseFloat(document.getElementById("input2").value) || 0;
+            let area = 0;
+            
+            if (shape === "circle") {
+                area = Math.PI * val1 * val1;
+            } else if (shape === "square") {
+                area = val1 * val1;
+            } else if (shape === "rectangle") {
+                area = val1 * val2;
+            } else if (shape === "triangle") {
+                area = 0.5 * val1 * val2;
+            }
+            
+            document.getElementById("result").innerText = `Area: ${area.toFixed(2)}`;
+        }
+
+        function updateShapeSize() {
+            const shape = document.getElementById("shapeSelector").value;
+            const val1 = parseFloat(document.getElementById("input1").value) || 50;
+            const val2 = parseFloat(document.getElementById("input2").value) || 50;
+            
+            document.querySelectorAll(".shape").forEach(el => el.style.display = "none");
+            const shapeElement = document.getElementById(shape);
+            
+            if (shape === "circle") {
+                shapeElement.style.width = `${val1 * 2}px`;
+                shapeElement.style.height = `${val1 * 2}px`;
+            } else if (shape === "square") {
+                shapeElement.style.width = `${val1}px`;
+                shapeElement.style.height = `${val1}px`;
+            } else if (shape === "rectangle") {
+                shapeElement.style.width = `${val1}px`;
+                shapeElement.style.height = `${val2}px`;
+            } else if (shape === "triangle") {
+                shapeElement.style.borderLeft = `${val1 / 2}px solid transparent`;
+                shapeElement.style.borderRight = `${val1 / 2}px solid transparent`;
+                shapeElement.style.borderBottom = `${val2}px solid orange`;
+            }
+            shapeElement.style.display = "block";
+        }
+    </script>
+</body>
+</html>
