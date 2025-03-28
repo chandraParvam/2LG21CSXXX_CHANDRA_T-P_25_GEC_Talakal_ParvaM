@@ -20,12 +20,19 @@ public class ProfileController {
     @Autowired
     private ProfileService profileService;
 
-    @GetMapping("/list")
-    public String list(Model model) {
-        model.addAttribute("profile", new Profile());
-        model.addAttribute("profiles",profileService.listAll() );
-        return "profile/index"; 
+    @GetMapping({"/list", "/edit/{id}"})
+public String list(@PathVariable(value = "id", required = false) Long id, Model model) {
+    Profile profile;
+    if (id != null) {
+        profile = profileService.getProfile(id); 
+    } else {
+        profile = new Profile(); 
     }
+    model.addAttribute("profile", profile);
+    model.addAttribute("profiles", profileService.listAll()); // Pass all profiles to the view
+    return "profile/index";
+}
+
 
 
     @PostMapping("/save")
@@ -37,6 +44,12 @@ public class ProfileController {
     @GetMapping("/delete/{id}")
     public String deleteProfile(@PathVariable Long id) {
         profileService.deleteProfile(id);
+        return "redirect:/profile/list";
+    }
+    @PostMapping("/update/{id}")
+    public String saveProfile(@PathVariable Long id,@ModelAttribute Profile pro) {
+        pro.setId(id);
+        profileService.saveProfile(pro);
         return "redirect:/profile/list";
     }
 
