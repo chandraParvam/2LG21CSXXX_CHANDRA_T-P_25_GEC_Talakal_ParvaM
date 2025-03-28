@@ -77,7 +77,7 @@ public class StaffController {
         String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
         String fileName = "image_" + timeStamp + extension; 
 
-        Path filePath = Paths.get(uploadDir + File.separator + fileName);
+        Path filePath = Paths.get(uploadDir + fileName);
         Files.copy(profilePic.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
         Staff stu = new Staff();
         stu.setName(name);
@@ -142,7 +142,7 @@ public class StaffController {
         String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
         String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
         String fileName = "image_" + timeStamp + extension;
-        Path filePath = Paths.get(uploadDir + File.separator + fileName);
+        Path filePath = Paths.get(uploadDir + fileName);
         Files.copy(profilePic.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
         Staff stu = new Staff();
         stu.setId(id);
